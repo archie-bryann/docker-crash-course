@@ -41,3 +41,27 @@ docker build -t myapp:nodemon .
 docker run --name myapp_c_nodemon -p 4000:4000 --rm myapp:nodemon # temporary container
 docker run --name myapp_c_nodemon -p 4000:4000 --rm -v C:\Users\Ekomobong\Documents\pro\docker-crash-course\api:/app -v /app/node_modules myapp:nodemon # temp. container + volumes
 ```
+
+```bash
+# as opposed to running:
+docker run --name myapp_c_nodemon -p 4000:4000 --rm -v C:\Users\Ekomobong\Documents\pro\docker-crash-course\api:/app -v /app/node_modules myapp:nodemon
+```
+
+```yaml
+version: "3.8"
+services:
+  api:
+    build: ./api
+    container_name: api_c
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules # to ensure node_modules in the container doesn't get deleted due to the the volume from local ./api
+```
+
+```bash
+docker-compose up
+docker-compose down # leaves images, containers and volumes
+docker-compose down --rmi all -v # removes images, containers and volumes
+```
