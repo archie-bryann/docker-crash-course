@@ -31,3 +31,13 @@ docker system prune -a # delete everything (images, containers, volumes)
 docker build -t myapp:v1 . # tags / version
 docker run --name myapp_c -p 4000:4000 myapp:v1
 ```
+
+```bash
+docker start -i myapp_c # -i (interactive)
+```
+
+```bash
+docker build -t myapp:nodemon .
+docker run --name myapp_c_nodemon -p 4000:4000 --rm myapp:nodemon # temporary container
+docker run --name myapp_c_nodemon -p 4000:4000 --rm -v C:\Users\Ekomobong\Documents\pro\docker-crash-course\api:/app -v /app/node_modules myapp:nodemon # temp. container + volume
+```
