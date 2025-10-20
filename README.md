@@ -26,3 +26,8 @@ docker container rm myapp_c1 myapp_c2
 ```bash
 docker system prune -a # delete everything (images, containers, volumes)
 ```
+
+```bash
+docker build -t myapp:v1 . # tags / version
+docker run --name myapp_c -p 4000:4000 myapp:v1
+```
