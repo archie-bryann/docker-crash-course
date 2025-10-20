@@ -16,3 +16,13 @@ docker run --name myapp_c2 -p 4000:4000 -d myapp
 docker ps -a # all
 docker start myapp_c2
 ```
+
+```bash
+docker image rm myapp4
+docker image rm myapp5 -f # force
+docker container rm myapp_c1 myapp_c2
+```
+
+```bash
+docker system prune -a # delete everything (images, containers, volumes)
+```
